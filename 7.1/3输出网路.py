@@ -1,3 +1,4 @@
+##预测发帖人的年龄性别收入水平
 import keras
 from keras import layers
 from keras import Input
@@ -28,18 +29,21 @@ model = Model(posts_input, [age_predition, income_predition, gender_predition])
 
 model.summary()
 
+#用不同函数逼近和设置不同权重
 model.compile(optimizer='rmsprop',
               loss=['mse', 'categorical_crossentropy', 'binary_crossentropy'],
               loss_weights=[0.25, 1., 10.])
 
+#当层有名字的时候可以用以下代码
 # model.compile(optimizer='rmsprop',
 #               loss={'age': 'mse',
 #                     'income': 'categorical_crossentropy',
 #                     'gender': 'binary_crossentropy'},
 #               loss_weights={'age': 0.25,
 #                             'income': 1.,
-#                             'gender': 10.})
+#                             'gender': 10.}) 
 
+#将数据输入到刚建立的 多输出模型 中
 model.fit(posts, [age_targets, income_targets, gender_targets],
           epochs=10, batch_size=64)
 
