@@ -47,3 +47,4 @@ model.fit(posts, [age_targets, income_targets, gender_targets],
 #                   'income': income_targets,
 #                   'gender': gender_targets},
 #           epochs=10, batch_size=64)
+
