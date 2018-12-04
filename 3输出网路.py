@@ -39,3 +39,11 @@ model.compile(optimizer='rmsprop',
 #               loss_weights={'age': 0.25,
 #                             'income': 1.,
 #                             'gender': 10.})
+
+model.fit(posts, [age_targets, income_targets, gender_targets],
+          epochs=10, batch_size=64)
+
+# model.fit(posts, {'age': age_targets,
+#                   'income': income_targets,
+#                   'gender': gender_targets},
+#           epochs=10, batch_size=64)
